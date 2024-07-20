@@ -7,7 +7,7 @@ class MultilayerPerceptron(nn.Module):
         self.fc1 = nn.Linear(input_size, 512)
         self.fc2 = nn.Linear(512, 128)
         self.fc3 = nn.Linear(128, 32)
-        self.fc4 = nn.Linear(32, 11)
+        self.fc4 = nn.Linear(32, output_size)
         self.relu = nn.ReLU()
 
     
@@ -29,7 +29,7 @@ class MultilayerPerceptronForPCA(nn.Module):
         super(MultilayerPerceptronForPCA, self).__init__()
         self.fc1 = nn.Linear(input_size, 64)
         self.fc2 = nn.Linear(64, 32)
-        self.fc3 = nn.Linear(32, 11)
+        self.fc3 = nn.Linear(32, output_size)
         self.relu = nn.ReLU()
 
     

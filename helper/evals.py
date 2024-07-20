@@ -86,7 +86,7 @@ def train_model(X, y, model, criterion, optimizer, n_epochs=200, print_every=10,
     return model, train_accs, train_losses, train_points, test_accs, test_losses, test_points
 
 
-def train_model_k_fold(X, y, model, criterion, optimizer, n_epochs=200, print_every=10, test_every=10, reshape_size=4172):
+def train_model_k_fold(X, y, model, criterion, optimizer, n_epochs=10, print_every=10, test_every=10, reshape_size=4172):
     train_accs = []
     test_accs = []
     train_losses = []
@@ -175,7 +175,7 @@ def prepare_train(model, X, y, reshape_size=4172, n_epochs=200):
     return train_model(X, y, model, criterion, optimizer, n_epochs=n_epochs, print_every=10, test_every=10, shuffle_on_each_epoch=False, reshape_size=reshape_size)
 
 
-def prepare_train_k_fold(model, X, y, reshape_size=4172, n_epochs=200):
+def prepare_train_k_fold(model, X, y, reshape_size=4172, n_epochs=10):
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     return train_model_k_fold(X, y, model, criterion, optimizer, n_epochs=n_epochs, print_every=10, test_every=10, reshape_size=reshape_size)

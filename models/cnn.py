@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class CNN(nn.Module):
-    def __init__(self, input_size):
+    def __init__(self, input_size, output_size):
         super(CNN, self).__init__()
         self.conv_layers = nn.Sequential(
             nn.Conv1d(in_channels=1, out_channels=16, kernel_size=3, stride=1, padding=1),
@@ -19,7 +19,7 @@ class CNN(nn.Module):
             nn.ReLU(),
             nn.Linear(256, 128),
             nn.ReLU(),
-            nn.Linear(128, 11)
+            nn.Linear(128, output_size)
         )
 
     def forward(self, x):
